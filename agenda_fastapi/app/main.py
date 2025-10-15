@@ -3,8 +3,13 @@ from sqlalchemy.orm import Session
 from typing import List
 import uvicorn
 
-from . import crud, models, schemas
-from .database import SessionLocal, engine, get_db
+try:
+    from . import crud, models, schemas
+    from .database import SessionLocal, engine, get_db
+except ImportError:
+    # Para ejecución directa
+    import crud, models, schemas
+    from database import SessionLocal, engine, get_db
 
 # Crear tablas en la base de datos
 models.Base.metadata.create_all(bind=engine)

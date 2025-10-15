@@ -1,4 +1,4 @@
-from pydantic import BaseModel, EmailStr
+from pydantic import BaseModel
 from datetime import datetime
 from typing import Optional
 
@@ -6,7 +6,7 @@ from typing import Optional
 class PersonaBase(BaseModel):
     nombre: str
     apellido: str
-    email: EmailStr
+    email: str
     telefono: Optional[str] = None
     direccion: Optional[str] = None
 
@@ -18,7 +18,7 @@ class PersonaCreate(PersonaBase):
 class PersonaUpdate(BaseModel):
     nombre: Optional[str] = None
     apellido: Optional[str] = None
-    email: Optional[EmailStr] = None
+    email: Optional[str] = None
     telefono: Optional[str] = None
     direccion: Optional[str] = None
 
